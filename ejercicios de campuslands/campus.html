@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>campuslands</title>
+
+    <style>
+        header{
+            background-color: rgb(62, 132, 236);
+        }
+
+        body {
+            /* display: flex; */
+            justify-content: center; /*Centra horizontalmente */ 
+            align-items: center; /*Centra verticalmente */
+            height: 100vh; /* Ajusta la altura del body al 100% de la ventana visible */
+            margin: 0; /* Elimina el margen por defecto del body */
+            text-align: center;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        p{
+            color: blue;
+        }
+
+        #contenedorResultadoEjercicio8{
+            border-color: blue;
+        }
+
+        section{
+            max-width: 500px;
+            text-align:justify;
+            position: relative;
+        }
+
+    </style>
+
+    <script defer>
+    function cargatodo(){    
+        //tercer ejercicio
+        let botondeltercerejercicio = document.getElementById("botonEjercicioTres");
+        botondeltercerejercicio.addEventListener("click", ejercicio3);
+
+        let spanDelSignoDelPrimerNumero = document.getElementById("negativoPositivo");
+        let spanDeMultiplicacionSuma = document.getElementById("multiplicacionSuma");
+        let spanDelResultado = document.getElementById("resultado");
+
+        function ejercicio3() {
+        console.log("Por medio de un cuadro de texto se pide el primer numero, del cual depende la operación que se vaya a realizar. Por medio de un condicional if-else evaluando la comparación lógica <<número <=> 0>> lo cúal indica que el número es negativo o positivo, y por ende hay que multiplicar o sumar todos los números y mostrar el resultado en pantalla por medio de un metodo de manipulación del DOM llamado innerHTML");
+
+            let primerNumero = parseInt(prompt("Primer numero"));
+            let segundoNumero = parseInt(prompt("segundo numero"));
+            let tercerNumero = parseInt(prompt("tercer numero"));
+            if (primerNumero < 0) {
+                spanDelSignoDelPrimerNumero.innerHTML="negativo";
+                spanDeMultiplicacionSuma.innerHTML="multiplicación"
+                spanDelResultado.innerHTML = primerNumero * segundoNumero * tercerNumero;
+                
+
+            } else if (primerNumero > 0) {
+                spanDelSignoDelPrimerNumero.innerHTML = "positivo";
+                spanDeMultiplicacionSuma.innerHTML = "suma"
+                spanDelResultado.innerHTML = primerNumero + segundoNumero + tercerNumero;
+            }            
+        }
+
+        //ejercicio 4
+        document.getElementById("botonDelEjercicio4").addEventListener("click", ejercicio4)
+        let textoQueDaElResultado = document.getElementById("resultadoDelEjercicioCuatro"); 
+
+        function operacion(persona,totalEnLaClase){
+            return((persona * 100)/totalEnLaClase);
+        }
+
+        function ejercicio4(){
+            console.log("En el ejercicio 4 se ejecuta una operación para saber el porcentaje de niños y niñas en un salón, creando una nueva función que contenga la operación para hayar cada porcentaje; dejando como campos abiertos las variables <<persona>> que indica si se va a sacar el porcentaje de las niñas o de los niños, y <<totalEnLaClase>> que almacena el valor total de alumnos en la clase -sin importar su sexo-.  ");
+            let niños = parseInt(prompt("cuantos niños hay?"));
+            let niñas = parseInt(prompt("cuantos niñas hay?"));
+            let total = niños + niñas;
+
+            textoQueDaElResultado.innerHTML = "El porcentaje de niños es del " + operacion(niños, total) + "%" +" Y el porcentaje de niñas es del " + operacion(niñas,total) + "%";   
+        }
+        
+        //ejercicio 5
+        document.getElementById("botonDelEjercicio5").addEventListener("click",ejercicio5);
+        function ejercicio5(){
+            let mensajeEnPantallaEjercicio5 = document.getElementById("resultadoEnPantallaEjercicio5");
+
+            let mesIngresado = prompt("Escribe el mes que quieres investigar").toUpperCase();
+
+            let precioSinDescuento = +prompt("ingresa el precio de estante que quieres consultar");
+            let precioConDescuento = precioSinDescuento - precioSinDescuento * 0.15
+
+            if (mesIngresado == "OCTUBRE" || mesIngresado == "OCTOBER") {
+               mensajeEnPantallaEjercicio5.innerHTML = "El precio de tu producto en el mes de " + mesIngresado + " es de " + precioConDescuento;
+            } else {
+                mensajeEnPantallaEjercicio5.innerHTML = "El precio de tu producto en el mes de " + mesIngresado + " es de " + precioSinDescuento;
+            }
+        }
+            
+        document.getElementById("botonDelEjercicio6").addEventListener("click", functionejercicio6);
+        let texto6 = document.getElementById("resultadoEnPantallaEjercicio6");
+        function functionejercicio6() {
+            let numeroingresado = +prompt("Ingresa un numero");
+            if(numeroingresado == 0) {
+                texto6.innerHTML="El número ingresado no es par ni impar"
+            }   else if (numeroingresado % 2 == 0) {
+                texto6.innerHTML="El número que ingresaste es par"
+            }   else {
+                texto6.innerHTML = "El número ingresado es impar"
+            }
+        }
+
+        //ejercicio8 
+        document.getElementById("botonDelEjercicio8").addEventListener("click",funcionejercicio8);
+       
+        function funcionejercicio8(){
+            var textoResultadoso = document.getElementById("ResultadoEjercicio8");
+            //declara un array vacio
+            let lista = [];
+
+            for (let num = 1; num <= 10; num++) {
+                //nombre del array.push(nuevo elemento) -> crea un nuevo elemento al final del array y devuelve la nueva length
+                lista.push(num);
+                
+            }
+            //nombre del array.join("separador") -> une los elementos del array, los convierte en string y los separa con el separador que le digamos dentro del parentesis.
+           let arrayjuntado = textoResultadoso.innerHTML = lista.join("<br>");
+        }
+    }
+    window.addEventListener("load", cargatodo);
+    </script>
+
+</head>
+<body>
+    <header><h1>Ejercicios de campuslands</h1></header>
+    <div class="contenedorDelEjercicio3">
+        <h2>Ejercicio #3</h2>
+        <section>
+            Pide por teclado tres numeros, si el primero es negativo multiplica los tres, si no se suman todos
+        </section>
+
+
+            <p>
+                <input type="button" value="Ejercicio 3" id="botonEjercicioTres">
+                
+                El primer numero fue <span id="negativoPositivo"></span>, entonces el resultado de la <span id="multiplicacionSuma"></span> es <span id="resultado"></span>
+            </p>
+    </div>
+
+    <div class="contenedorDelEjercicio4">
+        <h2>Ejercicio #4</h2>
+        <section>
+            Un colegio desea saber que porcentaje de niños y qué porcentaje de niñas haay en un curso actual. Diseñar un algoritmo para este proposito.
+
+            <button id="botonDelEjercicio4">Ejercicio 4</button>
+
+            <p id="resultadoDelEjercicioCuatro"></p>
+        </section>
+    </div>
+
+    <div>
+        <h2>Ejercicio #5</h2>
+        <section>
+            Una tienda ofrece un descuento del 15% sobre el total de la compra durante el
+            mes de octubre. Dado un mes y un importe, calcular cuál es la cantidad que
+            se debe cobrar al cliente.
+
+            <button id="botonDelEjercicio5">Ejercicio 5</button>
+
+            <p id="resultadoEnPantallaEjercicio5"></p>
+        </section>    
+    </div>
+
+    <div>
+        <h2>Ejercicio #6</h2>
+        <section>
+           Realizar un algoritmo que dado un número entero, visualice en pantalla si es par o impar. En el caso de ser O, debe visualizar el número no es par ni impar.
+    
+            <button id="botonDelEjercicio6">Ejercicio 6</button>
+    
+            <p id="resultadoEnPantallaEjercicio6"></p>
+        </section>
+    </div>
+
+    <div>
+        <h2>Ejercicio de bucles (ciclos)</h2>
+        <section>
+            Escribe un programa que muestre los números del 1 al 10 en la consola.
+
+    
+            <button id="botonDelEjercicio8">Muestra Resultado</button>
+            
+            <p id="ResultadoEjercicio8"></p>
+        </section>
+    </div>
+</body>
+</html>
